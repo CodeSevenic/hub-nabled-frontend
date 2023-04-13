@@ -1,7 +1,39 @@
-import HSAuth from './components/HS-Auth/HS-Auth';
+import React, { useState } from 'react';
+import AuthPage from './pages/Auth/AuthPage';
+import AppList from './components/AppList/AppList';
+import UserAppList from './components/UserAppList/UserAppList';
 
-function App() {
-  return <HSAuth />;
-}
+const App = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [installedApps, setInstalledApps] = useState([]);
+
+  // Dummy data for available apps
+  const apps = [
+    { id: 1, name: 'App 1', description: 'This is App 1' },
+    { id: 2, name: 'App 2', description: 'This is App 2' },
+  ];
+
+  const handleLogin = (user) => {
+    setIsLoggedIn(true);
+    // Set the user's installed apps here
+  };
+
+  const handleInstall = (appId) => {
+    // Handle the app installation here, e.g., save to the database
+    const app = apps.find((app) => app.id === appId);
+    setInstalledApps([...installedApps, app]);
+  };
+
+  if (!isLoggedIn) {
+    return <AuthPage onLogin={handleLogin} />;
+  }
+
+  return (
+    <div>
+      <UserAppList installedApps={installedApps} />
+      <AppList apps={apps} onInstall={handleInstall} />
+    </div>
+  );
+};
 
 export default App;
