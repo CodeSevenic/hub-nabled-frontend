@@ -8,7 +8,7 @@ function HSAuth() {
     setLoading(true);
 
     try {
-      const response = await axios.get('http://localhost:3000/api/v1/auth');
+      const response = await axios.get('http://localhost:8000/api/v1/auth');
       const authUrl = response.data.authUrl;
       window.location.href = authUrl;
     } catch (error) {
