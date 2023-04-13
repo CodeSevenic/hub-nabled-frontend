@@ -4,8 +4,25 @@ const LoginForm = ({ onLogin }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      const response = await fetch('/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        alert(data.message);
+        // Perform other actions, like updating the state, redirecting to another page, etc.
+      } else {
+        throw new Error('Login failed');
+      }
+    } catch (error) {
+      alert(error.message);
+    }
     onLogin({ email, password });
   };
 
