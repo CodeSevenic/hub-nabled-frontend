@@ -1,4 +1,5 @@
 ﻿import React, { useState } from 'react';
+import { AuthContext } from '../../context/AuthContext';
 import './Registration.css';
 
 const RegistrationForm = ({ onRegister }) => {
@@ -9,7 +10,7 @@ const RegistrationForm = ({ onRegister }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('/api/login', {
+      const response = await fetch('http://localhost:8000/api/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
