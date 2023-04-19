@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import AuthPage from './pages/Auth/AuthPage';
 import AppList from './components/AppList/AppList';
 import UserAppList from './components/UserAppList/UserAppList';
@@ -6,6 +6,24 @@ import UserAppList from './components/UserAppList/UserAppList';
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [installedApps, setInstalledApps] = useState([]);
+
+  useEffect(() => {
+    function setRootHeight() {
+      const root = document.getElementById('root');
+      if (root) {
+        const windowHeight = window.innerHeight;
+        root.style.height = `${windowHeight}px`;
+      }
+    }
+
+    setRootHeight();
+
+    window.addEventListener('resize', setRootHeight);
+
+    return () => {
+      window.removeEventListener('resize', setRootHeight);
+    };
+  }, []);
 
   // Dummy data for available apps
   const apps = [

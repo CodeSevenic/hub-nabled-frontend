@@ -21,7 +21,7 @@ const AuthPage = () => {
   };
 
   return (
-    <div className="auth-page">
+    <div className="auth-page registration-form--variant flex-item">
       {registered ? (
         <LoginForm onLogin={handleLogin} />
       ) : (
