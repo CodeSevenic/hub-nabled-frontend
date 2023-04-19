@@ -21,7 +21,7 @@ const AuthPage = () => {
   };
 
   return (
-    <div>
+    <div className="auth-page">
       {registered ? (
         <LoginForm onLogin={handleLogin} />
       ) : (
