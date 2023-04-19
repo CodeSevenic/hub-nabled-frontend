@@ -8,6 +8,7 @@ const App = () => {
   const [installedApps, setInstalledApps] = useState([]);
 
   useEffect(() => {
+    // Keep the #root container full height
     function setRootHeight() {
       const root = document.getElementById('root');
       if (root) {
