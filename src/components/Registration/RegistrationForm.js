@@ -29,7 +29,7 @@ const RegistrationForm = ({ onRegister }) => {
   };
 
   return (
-    <div className="registration-form flex-container">
+    <div className="registration-form">
       <form onSubmit={handleSubmit}>
         <h1>Register</h1>
         <div>
