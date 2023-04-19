@@ -3,7 +3,7 @@ import RegistrationForm from '../../components/Registration/RegistrationForm';
 import LoginForm from '../../components/Login/LoginForm';
 
 const AuthPage = () => {
-  const [registered, setRegistered] = useState(true);
+  const [registered, setRegistered] = useState(false);
 
   const handleRegister = ({ email, password }) => {
     // Handle user registration here, e.g., save to the database
