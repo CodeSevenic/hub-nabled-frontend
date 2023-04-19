@@ -1,8 +1,18 @@
-﻿import React from 'react';
+﻿import React, { useContext } from 'react';
+import { AuthContext } from '../context/AuthContext';
 
-const AppList = ({ apps, onInstall }) => {
+const AppList = ({ apps }) => {
+  const { installApp } = useContext(AuthContext);
+
+  const handleInstall = async (appId) => {
+    try {
+      await installApp(appId);
+    } catch (error) {
+      console.error('App installation failed:', error);
+    }
+  };
   return (
-    <div>
+    <div className="appList">
       <h1>Available Apps</h1>
       <ul>
         {apps.map((app) => (
@@ -10,7 +20,7 @@ const AppList = ({ apps, onInstall }) => {
             <div>
               <h3>{app.name}</h3>
               <p>{app.description}</p>
-              <button onClick={() => onInstall(app.id)}>Install</button>
+              <button onClick={() => handleInstall(app.id)}>Install</button>
             </div>
           </li>
         ))}

@@ -5,11 +5,24 @@ const RegistrationForm = ({ onRegister }) => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (password !== confirmPassword) {
-      alert('Passwords do not match');
-      return;
+    try {
+      const response = await fetch('/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        alert(data.message);
+        // Perform other actions, like updating the state, redirecting to another page, etc.
+      } else {
+        throw new Error('Login failed');
+      }
+    } catch (error) {
+      alert(error.message);
     }
     onRegister({ email, password });
   };
