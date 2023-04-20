@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+﻿import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import './Login.css';
 
@@ -6,22 +6,12 @@ const LoginForm = ({ onLogin }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const { login } = useContext(AuthContext);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:8000/api/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password }),
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        alert(data.message);
-        // Perform other actions, like updating the state, redirecting to another page, etc.
-      } else {
-        throw new Error('Login failed');
-      }
+      const response = await login(email, password);
     } catch (error) {
       alert(error.message);
     }

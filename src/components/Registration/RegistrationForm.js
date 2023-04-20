@@ -13,13 +13,6 @@ const RegistrationForm = ({ onRegister }) => {
     e.preventDefault();
     try {
       const response = await register(email, password);
-      if (response.ok) {
-        const data = await response.json();
-        alert(data.message);
-        // Perform other actions, like updating the state, redirecting to another page, etc.
-      } else {
-        throw new Error('Login failed');
-      }
     } catch (error) {
       alert(error.message);
     }

@@ -15,6 +15,8 @@ const AuthContextProvider = ({ children }) => {
     if (response.ok) {
       const data = await response.json();
       setUser(data.user);
+      // Perform other actions, like updating the state, redirecting to another page, etc.
+      console.log('Successfully went through!!!');
     } else {
       throw new Error('Login failed');
     }
@@ -30,6 +32,8 @@ const AuthContextProvider = ({ children }) => {
     if (response.ok) {
       const data = await response.json();
       setUser(data.user);
+      // Perform other actions, like updating the state, redirecting to another page, etc.
+      console.log('Successfully went through!!!');
     } else {
       throw new Error('Registration failed');
     }
