@@ -1,6 +1,7 @@
 ﻿import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import './Registration.css';
+import { Link } from 'react-router-dom';
 
 const RegistrationForm = ({ onRegister }) => {
   const [email, setEmail] = useState('');
@@ -56,6 +57,11 @@ const RegistrationForm = ({ onRegister }) => {
           </div>
           <button type="submit">Register</button>
         </form>
+        <div className="login-btn">
+          <Link to={'/login'}>
+            <button>Login</button>
+          </Link>
+        </div>
       </div>
     </div>
   );

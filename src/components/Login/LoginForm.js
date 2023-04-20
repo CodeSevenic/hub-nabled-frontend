@@ -1,6 +1,7 @@
 ﻿import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import './Login.css';
+import { Link } from 'react-router-dom';
 
 const LoginForm = ({ onLogin }) => {
   const [email, setEmail] = useState('');
@@ -46,6 +47,11 @@ const LoginForm = ({ onLogin }) => {
             Login
           </button>
         </form>
+        <div className="register-btn">
+          <Link to={'/register'}>
+            <button>Register</button>
+          </Link>
+        </div>
       </div>
     </div>
   );

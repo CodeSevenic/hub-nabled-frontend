@@ -2,6 +2,7 @@
   background: linear-gradient(to bottom, #663399, #8a2be2);
   padding: 50px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   /* min-height: 100vh; */
@@ -54,12 +55,37 @@
   color: white;
   border: none;
   border-radius: 5px;
-  padding: 10px;
+  padding: 9px;
   width: 100%;
   font-size: 16px;
   cursor: pointer;
+  border: 1px solid #663399;
+  transition: all 0.3s;
 }
 
 .login-form button[type='submit']:hover {
   background-color: #8a2be2;
+  border: 1px solid #fff;
+}
+
+.login-form .register-btn {
+  margin-top: 30px;
+}
+.login-form .register-btn button {
+  background-color: #663399;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  border: 1px solid #663399;
+  transition: all 0.3s;
+  text-transform: uppercase;
+}
+
+.login-form .register-btn button:hover {
+  background-color: #8a2be2;
+  border: 1px solid #fff;
 }
