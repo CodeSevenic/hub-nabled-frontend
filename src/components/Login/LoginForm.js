@@ -2,7 +2,7 @@
 import { AuthContext } from '../../context/AuthContext';
 import './Login.css';
 
-const LoginForm = () => {
+const LoginForm = ({ onLogin }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -42,7 +42,9 @@ const LoginForm = () => {
               required
             />
           </div>
-          <button type="submit">Login</button>
+          <button onClick={onLogin} type="submit">
+            Login
+          </button>
         </form>
       </div>
     </div>

@@ -7,6 +7,7 @@ import LoginForm from './components/Login/LoginForm';
 import RegistrationForm from './components/Registration/RegistrationForm';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Home from './components/Home/Home';
+import PublicRoute from './components/PublicRoute/PublicRoute';
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -40,6 +41,7 @@ const App = () => {
   const handleLogin = (user) => {
     setIsLoggedIn(true);
     // Set the user's installed apps here
+    console.log('isLoggedIn', isLoggedIn);
   };
 
   const handleLogout = () => {
@@ -59,11 +61,15 @@ const App = () => {
   return (
     <Router>
       <Routes>
+        <Route path="/login" element={<PublicRoute isLoggedIn={isLoggedIn} />}>
+          <Route index element={<LoginForm />} />
+        </Route>
+        <Route path="/register" element={<PublicRoute isLoggedIn={isLoggedIn} />}>
+          <Route index element={<RegistrationForm />} />
+        </Route>
         <Route path="/" element={<PrivateRoute isLoggedIn={isLoggedIn} />}>
           <Route index element={<Home />} />
         </Route>
-        <Route path="/login" element={<LoginForm onLogin={handleLogin} />} />
-        <Route path="/register" element={<RegistrationForm />} />
       </Routes>
     </Router>
   );
