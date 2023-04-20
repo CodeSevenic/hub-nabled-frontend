@@ -10,13 +10,13 @@ const RegistrationForm = ({ onRegister }) => {
   const { register } = useContext(AuthContext);
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await register(email, password);
-    } catch (error) {
-      alert(error.message);
-    }
-    onRegister({ email, password });
+    // e.preventDefault();
+    // try {
+    //   const response = await register(email, password);
+    // } catch (error) {
+    //   alert(error.message);
+    // }
+    // onRegister({ email, password });
   };
 
   return (

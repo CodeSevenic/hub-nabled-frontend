@@ -62,7 +62,7 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/login" element={<PublicRoute isLoggedIn={isLoggedIn} />}>
-          <Route index element={<LoginForm />} />
+          <Route index element={<LoginForm onLogin={handleLogin} />} />
         </Route>
         <Route path="/register" element={<PublicRoute isLoggedIn={isLoggedIn} />}>
           <Route index element={<RegistrationForm />} />

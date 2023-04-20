@@ -9,12 +9,12 @@ const LoginForm = ({ onLogin }) => {
   const { login } = useContext(AuthContext);
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await login(email, password);
-    } catch (error) {
-      alert(error.message);
-    }
+    // e.preventDefault();
+    // try {
+    //   const response = await login(email, password);
+    // } catch (error) {
+    //   alert(error.message);
+    // }
   };
 
   return (
