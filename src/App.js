@@ -54,10 +54,6 @@ const App = () => {
     setInstalledApps([...installedApps, app]);
   };
 
-  // if (!isLoggedIn) {
-  //   return <AuthPage onLogin={handleLogin} />;
-  // }
-
   return (
     <Router>
       <Routes>
