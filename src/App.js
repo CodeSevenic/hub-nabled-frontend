@@ -8,11 +8,13 @@ import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Home from './components/Home/Home';
 import PublicRoute from './components/PublicRoute/PublicRoute';
 import { AuthContext } from './context/AuthContext';
+import AppAdmin from './components/AppAdmin/AppAdmin';
+import AdminRoute from './components/AdminRoute/AdminRoute';
 
 const App = () => {
   const [installedApps, setInstalledApps] = useState([]);
 
-  const { isLoggedIn } = useContext(AuthContext);
+  const { isLoggedIn, isAdmin } = useContext(AuthContext);
 
   useEffect(() => {
     // Keep the #root container full height
@@ -62,6 +64,9 @@ const App = () => {
         </Route>
         <Route path="/" element={<PrivateRoute isLoggedIn={isLoggedIn} />}>
           <Route index element={<Home />} />
+        </Route>
+        <Route path="/app-admin" element={<AdminRoute isLoggedIn={isLoggedIn} isAdmin={isAdmin} />}>
+          <Route index element={<AppAdmin />} />
         </Route>
       </Routes>
     </Router>
