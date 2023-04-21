@@ -10,12 +10,8 @@ const LoginForm = ({ onLogin }) => {
   const { login } = useContext(AuthContext);
 
   const handleSubmit = async (e) => {
-    // e.preventDefault();
-    // try {
-    //   const response = await login(email, password);
-    // } catch (error) {
-    //   alert(error.message);
-    // }
+    e.preventDefault();
+    const response = await login(email, password);
   };
 
   return (
@@ -43,9 +39,7 @@ const LoginForm = ({ onLogin }) => {
               required
             />
           </div>
-          <button onClick={onLogin} type="submit">
-            Login
-          </button>
+          <button type="submit">Login</button>
         </form>
         <div className="register-btn">
           <Link to={'/register'}>

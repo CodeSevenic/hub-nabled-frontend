@@ -6,7 +6,7 @@ const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
   const login = async (email, password) => {
-    const response = await fetch('http://localhost:8000/api/login', {
+    const response = await fetch('http://localhost:4000/api/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password }),
@@ -16,24 +16,26 @@ const AuthContextProvider = ({ children }) => {
       const data = await response.json();
       setUser(data.user);
       // Perform other actions, like updating the state, redirecting to another page, etc.
-      console.log('Successfully went through!!!');
+      console.log('Login: Successfully went through!!!');
     } else {
       throw new Error('Login failed');
     }
   };
 
   const register = async (email, password) => {
-    const response = await fetch('http://localhost:8000/api/register', {
+    const response = await fetch('http://localhost:4000/api/register', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password }),
     });
 
+    console.log(response);
+
     if (response.ok) {
       const data = await response.json();
       setUser(data.user);
       // Perform other actions, like updating the state, redirecting to another page, etc.
-      console.log('Successfully went through!!!');
+      console.log('Register: Successfully went through!!!');
     } else {
       throw new Error('Registration failed');
     }

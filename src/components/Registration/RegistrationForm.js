@@ -1,4 +1,6 @@
 ﻿import React, { useContext, useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
 import { AuthContext } from '../../context/AuthContext';
 import './Registration.css';
 import { Link } from 'react-router-dom';
@@ -11,19 +13,29 @@ const RegistrationForm = ({ onRegister }) => {
   const { register } = useContext(AuthContext);
 
   const handleSubmit = async (e) => {
-    // e.preventDefault();
-    // try {
-    //   const response = await register(email, password);
-    // } catch (error) {
-    //   alert(error.message);
-    // }
-    // onRegister({ email, password });
+    e.preventDefault();
+    if (password !== confirmPassword) {
+      console.log('Passwords do not match');
+      toast.error('Passwords do not match');
+      return;
+    }
+    try {
+      const response = await register(email, password);
+      toast.success(response.data.message);
+    } catch (error) {
+      if (error.response && error.response.status === 400) {
+        toast.error(error.response.data.message);
+      } else {
+        toast.error('Registration failed');
+      }
+    }
   };
 
   return (
     <div className="auth-page">
+      <ToastContainer />
       <div className="registration-form">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} autoComplete="off">
           <h1>Register</h1>
           <div>
             <label htmlFor="email">Email:</label>
@@ -32,6 +44,7 @@ const RegistrationForm = ({ onRegister }) => {
               id="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              autoComplete="off"
               required
             />
           </div>
@@ -42,6 +55,7 @@ const RegistrationForm = ({ onRegister }) => {
               id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              autoComplete="new-password"
               required
             />
           </div>
@@ -52,6 +66,7 @@ const RegistrationForm = ({ onRegister }) => {
               id="confirmPassword"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
+              autoComplete="new-password"
               required
             />
           </div>
