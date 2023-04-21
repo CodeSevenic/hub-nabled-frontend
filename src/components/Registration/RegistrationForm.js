@@ -73,6 +73,7 @@ const RegistrationForm = ({ onRegister }) => {
           <button type="submit">Register</button>
         </form>
         <div className="login-btn">
+          <p>Already have an account?</p>
           <Link to={'/login'}>
             <button>Login</button>
           </Link>

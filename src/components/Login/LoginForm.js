@@ -3,7 +3,7 @@ import { AuthContext } from '../../context/AuthContext';
 import './Login.css';
 import { Link } from 'react-router-dom';
 
-const LoginForm = ({ onLogin }) => {
+const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -42,6 +42,7 @@ const LoginForm = ({ onLogin }) => {
           <button type="submit">Login</button>
         </form>
         <div className="register-btn">
+          <p>Don't have an account yet?</p>
           <Link to={'/register'}>
             <button>Register</button>
           </Link>

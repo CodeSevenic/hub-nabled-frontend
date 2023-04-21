@@ -76,8 +76,9 @@
 }
 
 .registration-form .login-btn {
-  margin-top: 30px;
+  margin-top: 20px;
 }
+
 .registration-form .login-btn button {
   background-color: #663399;
   color: white;
@@ -95,4 +96,19 @@
 .registration-form .login-btn button:hover {
   background-color: #8a2be2;
   border: 1px solid #fff;
+}
+
+.register-btn p,
+.login-btn p {
+  border-top: 1px solid;
+  color: white;
+  font-size: 14px;
+  padding-top: 10px;
+}
+
+.register-btn a,
+.login-btn a {
+  display: block;
+  margin: 0 auto;
+  width: fit-content;
 }

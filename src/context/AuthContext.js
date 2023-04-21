@@ -4,6 +4,7 @@ export const AuthContext = createContext();
 
 const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const login = async (email, password) => {
     const response = await fetch('http://localhost:4000/api/login', {
@@ -14,6 +15,7 @@ const AuthContextProvider = ({ children }) => {
 
     if (response.ok) {
       const data = await response.json();
+      setIsLoggedIn(true);
       setUser(data.user);
       // Perform other actions, like updating the state, redirecting to another page, etc.
       console.log('Login: Successfully went through!!!');
@@ -54,7 +56,7 @@ const AuthContextProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, register, installApp }}>
+    <AuthContext.Provider value={{ user, login, register, installApp, isLoggedIn }}>
       {children}
     </AuthContext.Provider>
   );
