@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import AppList from './components/AppList/AppList';
 import UserAppList from './components/UserAppList/UserAppList';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
@@ -7,10 +7,12 @@ import RegistrationForm from './components/Registration/RegistrationForm';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Home from './components/Home/Home';
 import PublicRoute from './components/PublicRoute/PublicRoute';
+import { AuthContext } from './context/AuthContext';
 
 const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [installedApps, setInstalledApps] = useState([]);
+
+  const { isLoggedIn } = useContext(AuthContext);
 
   useEffect(() => {
     // Keep the #root container full height
@@ -38,10 +40,10 @@ const App = () => {
   ];
 
   const handleLogin = (user) => {
-    setIsLoggedIn(true);
     // Set the user's installed apps here
-    console.log('isLoggedIn', isLoggedIn);
   };
+
+  console.log('isLoggedIn', isLoggedIn);
 
   const handleInstall = (appId) => {
     // Handle the app installation here, e.g., save to the database
