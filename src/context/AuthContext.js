@@ -16,6 +16,9 @@ const AuthContextProvider = ({ children }) => {
 
     if (response.ok) {
       const data = await response.json();
+      if (data.isAdmin) {
+        setIsAdmin(true);
+      }
       setIsLoggedIn(true);
       setUser(data.user);
       // Perform other actions, like updating the state, redirecting to another page, etc.

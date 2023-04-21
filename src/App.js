@@ -9,7 +9,6 @@ import Home from './components/Home/Home';
 import PublicRoute from './components/PublicRoute/PublicRoute';
 import { AuthContext } from './context/AuthContext';
 import AppAdmin from './components/AppAdmin/AppAdmin';
-import AdminRoute from './components/AdminRoute/AdminRoute';
 
 const App = () => {
   const [installedApps, setInstalledApps] = useState([]);
@@ -53,6 +52,8 @@ const App = () => {
     setInstalledApps([...installedApps, app]);
   };
 
+  console.log('isAdmin: ', isAdmin);
+
   return (
     <Router>
       <Routes>
@@ -62,10 +63,13 @@ const App = () => {
         <Route path="/register" element={<PublicRoute isLoggedIn={isLoggedIn} />}>
           <Route index element={<RegistrationForm />} />
         </Route>
-        <Route path="/" element={<PrivateRoute isLoggedIn={isLoggedIn} />}>
+        <Route path="/" element={<PrivateRoute isLoggedIn={isLoggedIn} isAdmin={isAdmin} />}>
           <Route index element={<Home />} />
         </Route>
-        <Route path="/app-admin" element={<AdminRoute isLoggedIn={isLoggedIn} isAdmin={isAdmin} />}>
+        <Route
+          path="/app-admin"
+          element={<PrivateRoute isLoggedIn={isLoggedIn} isAdmin={isAdmin} />}
+        >
           <Route index element={<AppAdmin />} />
         </Route>
       </Routes>

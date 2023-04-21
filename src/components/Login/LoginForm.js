@@ -39,7 +39,7 @@ const LoginForm = () => {
         theme="dark"
       />
       <div className="login-form">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} autoComplete="off">
           <h1>Login</h1>
           <div>
             <label htmlFor="email">Email:</label>
@@ -49,6 +49,7 @@ const LoginForm = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
+              autoComplete="off"
             />
           </div>
           <div>
@@ -59,6 +60,7 @@ const LoginForm = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
+              autoComplete="new-password"
             />
           </div>
           <button type="submit">Login</button>

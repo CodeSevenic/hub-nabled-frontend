@@ -6,7 +6,7 @@ import { db } from '../../firebase/firebase';
 const AppAdmin = () => {
   const [apps, setApps] = useState([]);
   const [appName, setAppName] = useState('');
-
+  console.log('Add Apps');
   useEffect(() => {
     const appsCollection = collection(db, 'apps');
     const q = query(appsCollection, orderBy('name'));
