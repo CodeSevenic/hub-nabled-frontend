@@ -1,5 +1,6 @@
 ﻿import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../context/AuthContext';
+import { ToastContainer, toast } from 'react-toastify';
 import './Login.css';
 import { Link } from 'react-router-dom';
 
@@ -11,11 +12,32 @@ const LoginForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await login(email, password);
+    try {
+      const response = await login(email, password);
+      toast.success(response.data.message);
+    } catch (error) {
+      if (error.response && error.response.status === 400) {
+        toast.error(error.response.data.message);
+      } else {
+        toast.error('Wrong Password or Email');
+      }
+    }
   };
 
   return (
     <div className="auth-page">
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
       <div className="login-form">
         <form onSubmit={handleSubmit}>
           <h1>Login</h1>
