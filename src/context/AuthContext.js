@@ -5,6 +5,7 @@ export const AuthContext = createContext();
 const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   const login = async (email, password) => {
     const response = await fetch('http://localhost:4000/api/login', {
@@ -56,7 +57,7 @@ const AuthContextProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, register, installApp, isLoggedIn }}>
+    <AuthContext.Provider value={{ user, login, register, installApp, isLoggedIn, isAdmin }}>
       {children}
     </AuthContext.Provider>
   );
