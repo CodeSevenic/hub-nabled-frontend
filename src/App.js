@@ -43,7 +43,7 @@ const App = () => {
     // Set the user's installed apps here
   };
 
-  console.log('isLoggedIn', isLoggedIn);
+  console.log('isLoggedIn: ', isLoggedIn);
 
   const handleInstall = (appId) => {
     // Handle the app installation here, e.g., save to the database
@@ -55,7 +55,7 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/login" element={<PublicRoute isLoggedIn={isLoggedIn} />}>
-          <Route index element={<LoginForm onLogin={handleLogin} />} />
+          <Route index element={<LoginForm />} />
         </Route>
         <Route path="/register" element={<PublicRoute isLoggedIn={isLoggedIn} />}>
           <Route index element={<RegistrationForm />} />
