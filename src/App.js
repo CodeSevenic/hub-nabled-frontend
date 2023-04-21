@@ -43,10 +43,6 @@ const App = () => {
     console.log('isLoggedIn', isLoggedIn);
   };
 
-  const handleLogout = () => {
-    setIsLoggedIn(false);
-  };
-
   const handleInstall = (appId) => {
     // Handle the app installation here, e.g., save to the database
     const app = apps.find((app) => app.id === appId);
