@@ -62,6 +62,7 @@ const RegistrationForm = ({ onRegister }) => {
           <div>
             <label htmlFor="password">Password:</label>
             <input
+              placeholder="Password"
               type="password"
               id="password"
               value={password}
