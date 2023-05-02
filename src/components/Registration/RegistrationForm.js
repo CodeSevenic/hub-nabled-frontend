@@ -79,7 +79,7 @@ const RegistrationForm = ({ onRegister }) => {
               type="password"
               id="confirmPassword"
               value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
+              // onChange={(e) => setConfirmPassword(e.target.value)}
               autoComplete="new-password"
               required
             />
