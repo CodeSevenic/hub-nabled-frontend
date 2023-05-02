@@ -73,7 +73,7 @@ const RegistrationForm = ({ onRegister }) => {
             />
           </div>
           <div>
-            <label htmlFor="confirmPassword">Confirm Password:</label>
+            {/* <label htmlFor="confirmPassword">Confirm Password:</label> */}
             <input
               placeholder="Confirm Password"
               type="password"
