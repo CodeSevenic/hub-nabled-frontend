@@ -51,6 +51,7 @@ const RegistrationForm = ({ onRegister }) => {
           <div>
             <label htmlFor="email">Email:</label>
             <input
+              placeholder="Email"
               type="email"
               id="email"
               value={email}
