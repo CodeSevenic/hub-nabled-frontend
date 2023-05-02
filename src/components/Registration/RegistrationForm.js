@@ -75,6 +75,7 @@ const RegistrationForm = ({ onRegister }) => {
           <div>
             <label htmlFor="confirmPassword">Confirm Password:</label>
             <input
+              placeholder="Confirm Password"
               type="password"
               id="confirmPassword"
               value={confirmPassword}
