@@ -42,6 +42,7 @@ const AuthContextProvider = ({ children }) => {
       setUser(data.user);
       // Perform other actions, like updating the state, redirecting to another page, etc.
       console.log('Register: Successfully went through!!!');
+      console.log('Register: ', data);
     } else {
       throw new Error('Registration failed');
     }
