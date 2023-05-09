@@ -21,13 +21,15 @@ const RegistrationForm = ({ onRegister }) => {
     }
     try {
       const response = await register(email, password);
-      toast.success(response.data.message);
-    } catch (error) {
-      if (error.response && error.response.status === 400) {
-        toast.error(error.response.data.message);
+      if (response.error) {
+        toast.error(response.error);
+        return;
       } else {
-        toast.error('Registration failed');
+        toast.success(response.message);
       }
+    } catch (error) {
+      console.error(error);
+      toast.error('Registration failed');
     }
   };
 
