@@ -21,11 +21,12 @@ const RegistrationForm = ({ onRegister }) => {
     }
     try {
       const response = await register(email, password);
-      if (response.error) {
-        toast.error(response.error);
+      console.log('STATUS: ', response);
+      if (response.status === 200) {
+        toast.success(response.message);
         return;
       } else {
-        toast.success(response.message);
+        toast.error(response.message);
       }
     } catch (error) {
       console.error(error);
