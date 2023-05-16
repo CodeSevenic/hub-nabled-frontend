@@ -86,9 +86,13 @@
   transition: all 0.3s ease;
 }
 
+.admin-dashboard .app-item p {
+  margin: 0;
+}
+
 .admin-dashboard .app-item button {
   background: #8a2be2;
-  background: linear-gradient(145deg, #8a2be2, #ff0000);
+  background: linear-gradient(145deg, #8a2be2, #887f8f);
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -102,7 +106,7 @@
 }
 
 .admin-dashboard .app-item button:hover {
-  background: linear-gradient(145deg, #ff0000, #8a2be2);
+  background: linear-gradient(145deg, #8a2be2, #887f8f);
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.4);
   /* transform: scale(1.05); */
 }
