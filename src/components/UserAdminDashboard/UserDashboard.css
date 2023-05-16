@@ -49,6 +49,7 @@
   cursor: pointer;
   border: 1px solid #663399;
   transition: all 0.3s;
+  height: fit-content;
 }
 
 .user-dashboard .user-dashboard-install-btn:hover {
@@ -68,4 +69,12 @@
 
 .user-dashboard > ul .user-dashboard-list-item {
   box-sizing: border-box;
+  display: flex;
+  gap: 3.125rem;
+  align-items: center;
+}
+
+.user-dashboard > ul .user-dashboard-list-item > p {
+  font-size: 1.2rem;
+  font-weight: 600;
 }
