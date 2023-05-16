@@ -8,3 +8,28 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
+
+/* ========== start of styled scroll ======= */
+
+/* This part applies to the whole scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* This is the scrollbar track */
+::-webkit-scrollbar-track {
+  background: #663399;
+}
+
+/* This is the scrollbar handle (the part you drag) */
+::-webkit-scrollbar-thumb {
+  background: #8a2be2;
+  border-radius: 10px;
+}
+
+/* This is the scrollbar handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #8a2be2;
+}
+
+/* ===== End of styled scroll ===== */

@@ -56,6 +56,8 @@
 
 .admin-dashboard .admin-dashboard-column {
   width: 48%;
+  overflow: auto;
+  max-height: 600px;
 }
 
 .admin-dashboard .admin-dashboard-column form {
