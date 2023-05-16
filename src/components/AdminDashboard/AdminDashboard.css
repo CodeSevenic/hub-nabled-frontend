@@ -1,0 +1,56 @@
+﻿.admin-dashboard {
+  background: linear-gradient(to bottom, #663399, #8a2be2);
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 400px;
+  margin: 0 auto;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  clip-path: polygon(0 10%, 10% 0, 90% 0, 100% 10%, 100% 90%, 90% 100%, 10% 100%, 0 90%);
+}
+
+.admin-dashboard h2 {
+  color: white;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 30px;
+}
+
+.admin-dashboard label {
+  color: white;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.admin-dashboard input {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+.admin-dashboard input:focus {
+  outline: none;
+  box-shadow: 0 0 3px 3px rgba(106, 90, 205, 0.3);
+}
+
+.admin-dashboard button[type='submit'] {
+  background-color: #663399;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 9px;
+  width: 100%;
+  font-size: 16px;
+  cursor: pointer;
+  border: 1px solid #663399;
+  transition: all 0.3s;
+}
+
+.admin-dashboard button[type='submit']:hover {
+  background-color: #8a2be2;
+  border: 1px solid #fff;
+}

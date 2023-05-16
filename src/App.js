@@ -62,7 +62,7 @@ const App = () => {
           <Route index element={<RegistrationForm />} />
         </Route>
         <Route path="/" element={<PrivateRoute isLoggedIn={isLoggedIn} isAdmin={isAdmin} />}>
-          <Route index element={<Home />} />
+          <Route index element={<AdminDashboard />} />
         </Route>
         <Route
           path="/app-admin"
