@@ -26,7 +26,7 @@ const UserDashboard = () => {
       <ul className="user-dashboard-list">
         {apps.map((app) => (
           <li key={app.id} className="user-dashboard-list-item">
-            {app.appName}{' '}
+            <p>{app.appName}</p>
             <button
               className="user-dashboard-install-btn"
               onClick={() => alert('Implement installation process')}
