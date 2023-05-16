@@ -103,10 +103,12 @@
   height: -moz-fit-content;
   height: fit-content;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+  border: 1px solid #663399;
 }
 
 .admin-dashboard .app-item button:hover {
   background: linear-gradient(145deg, #8a2be2, #887f8f);
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.4);
+  border: 1px solid #fff;
   /* transform: scale(1.05); */
 }
