@@ -1,6 +1,7 @@
 ﻿// src/components/UserDashboard.js
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import './UserDashboard.css'; // Importing the CSS file
 
 const UserDashboard = () => {
   const [apps, setApps] = useState([]);
@@ -20,13 +21,18 @@ const UserDashboard = () => {
   }, []);
 
   return (
-    <div className="UserDashboard">
-      <h2>Available Apps</h2>
-      <ul>
+    <div className="user-dashboard">
+      <h2 className="user-dashboard-title">Available Apps</h2>
+      <ul className="user-dashboard-list">
         {apps.map((app) => (
-          <li key={app.id}>
-            {app.appId}{' '}
-            <button onClick={() => alert('Implement installation process')}>Install</button>
+          <li key={app.id} className="user-dashboard-list-item">
+            {app.appName}{' '}
+            <button
+              className="user-dashboard-install-btn"
+              onClick={() => alert('Implement installation process')}
+            >
+              Install
+            </button>
           </li>
         ))}
       </ul>

@@ -7,6 +7,7 @@ import Home from './components/Home/Home';
 import PublicRoute from './components/PublicRoute/PublicRoute';
 import { AuthContext } from './context/AuthContext';
 import AdminDashboard from './components/AdminDashboard/AdminDashboard';
+import UserDashboard from './components/UserAdminDashboard/UserAdminDashboard';
 
 const App = () => {
   const [installedApps, setInstalledApps] = useState([]);
@@ -62,7 +63,7 @@ const App = () => {
           <Route index element={<RegistrationForm />} />
         </Route>
         <Route path="/" element={<PrivateRoute isLoggedIn={isLoggedIn} isAdmin={isAdmin} />}>
-          <Route index element={<AdminDashboard />} />
+          <Route index element={<UserDashboard />} />
         </Route>
         <Route
           path="/app-admin"
