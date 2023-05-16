@@ -9,7 +9,7 @@ const UserDashboard = () => {
   useEffect(() => {
     const fetchApps = async () => {
       try {
-        const response = await axios.get('http://localhost:3001/apps');
+        const response = await axios.get('http://localhost:4000/apps');
         setApps(response.data);
       } catch (error) {
         console.error(error);
