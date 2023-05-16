@@ -4,7 +4,7 @@ import axios from 'axios';
 import './AdminDashboard.css';
 
 const AdminDashboard = () => {
-  const [newApp, setNewApp] = useState({ appId: '', appSecret: '', scopes: '' });
+  const [newApp, setNewApp] = useState({ appName: '', appId: '', appSecret: '', scopes: '' });
 
   // Update newApp state based on form input
   const handleChange = (e) => {
@@ -17,7 +17,7 @@ const AdminDashboard = () => {
     try {
       console.log('newApp: ', newApp);
       await axios.post('http://localhost:4000/apps', newApp);
-      setNewApp({ appId: '', appSecret: '', scopes: '' });
+      setNewApp({ appName: '', appId: '', appSecret: '', scopes: '' });
       alert('App added successfully');
     } catch (error) {
       console.error(error);
@@ -29,6 +29,15 @@ const AdminDashboard = () => {
     <div className="admin-dashboard">
       <h2>Add New App</h2>
       <form onSubmit={handleSubmit}>
+        <label htmlFor="appId">App Name:</label>
+        <input
+          type="text"
+          id="appName"
+          name="appName"
+          value={newApp.appName}
+          onChange={handleChange}
+          required
+        />
         <label htmlFor="appId">App ID:</label>
         <input
           type="text"
