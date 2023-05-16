@@ -55,7 +55,16 @@
   border: 1px solid #fff;
 }
 
+.admin-dashboard > form {
+  width: 100%;
+  overflow: hidden;
+}
+
 .admin-dashboard > form * {
   display: block;
   width: 100%;
+}
+
+.admin-dashboard > form input {
+  box-sizing: border-box;
 }
