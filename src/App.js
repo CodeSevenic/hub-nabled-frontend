@@ -1,6 +1,4 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
-import AppList from './components/AppList/AppList';
-import UserAppList from './components/UserAppList/UserAppList';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import LoginForm from './components/Login/LoginForm';
 import RegistrationForm from './components/Registration/RegistrationForm';
@@ -8,7 +6,7 @@ import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Home from './components/Home/Home';
 import PublicRoute from './components/PublicRoute/PublicRoute';
 import { AuthContext } from './context/AuthContext';
-import AppAdmin from './components/AppAdmin/AppAdmin';
+import AdminDashboard from './components/AdminDashboard/AdminDashboard';
 
 const App = () => {
   const [installedApps, setInstalledApps] = useState([]);
@@ -70,7 +68,7 @@ const App = () => {
           path="/app-admin"
           element={<PrivateRoute isLoggedIn={isLoggedIn} isAdmin={isAdmin} />}
         >
-          <Route index element={<AppAdmin />} />
+          <Route index element={<AdminDashboard />} />
         </Route>
       </Routes>
     </Router>
