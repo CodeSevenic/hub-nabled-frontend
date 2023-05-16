@@ -54,3 +54,8 @@
   background-color: #8a2be2;
   border: 1px solid #fff;
 }
+
+.admin-dashboard > form * {
+  display: block;
+  width: 100%;
+}

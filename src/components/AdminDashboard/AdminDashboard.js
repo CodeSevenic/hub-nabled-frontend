@@ -1,6 +1,7 @@
 ﻿// src/components/AdminDashboard.js
 import React, { useState } from 'react';
 import axios from 'axios';
+import './AdminDashboard.css';
 
 const AdminDashboard = () => {
   const [newApp, setNewApp] = useState({ appId: '', appSecret: '', scopes: '' });
@@ -24,7 +25,7 @@ const AdminDashboard = () => {
   };
 
   return (
-    <div className="AdminDashboard">
+    <div className="admin-dashboard">
       <h2>Add New App</h2>
       <form onSubmit={handleSubmit}>
         <label htmlFor="appId">App ID:</label>
