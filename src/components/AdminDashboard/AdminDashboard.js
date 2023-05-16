@@ -16,7 +16,7 @@ const AdminDashboard = () => {
     e.preventDefault();
     try {
       console.log('newApp: ', newApp);
-      await axios.post('http://localhost:3001/apps', newApp);
+      await axios.post('http://localhost:4000/apps', newApp);
       setNewApp({ appId: '', appSecret: '', scopes: '' });
       alert('App added successfully');
     } catch (error) {
