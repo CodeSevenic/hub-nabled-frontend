@@ -22,7 +22,7 @@ const UserDashboard = () => {
   const installApp = (app) => {
     const url =
       'https://app.hubspot.com/oauth/authorize' +
-      `?client_id=${encodeURIComponent(app.client_id)}` +
+      `?client_id=${encodeURIComponent(app.clientId)}` +
       `&scope=${encodeURIComponent(app.scopes)}` +
       `&redirect_uri=${encodeURIComponent(app.redirect_uri)}`;
     window.open(url, '_blank');
