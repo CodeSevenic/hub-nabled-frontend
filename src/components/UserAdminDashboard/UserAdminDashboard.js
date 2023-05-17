@@ -16,7 +16,6 @@ const UserDashboard = () => {
         console.error(error);
       }
     };
-
     fetchApps();
   }, []);
 
