@@ -4,7 +4,13 @@ import axios from 'axios';
 import './AdminDashboard.css';
 
 const AdminDashboard = () => {
-  const [newApp, setNewApp] = useState({ appName: '', appId: '', appSecret: '', scopes: '' });
+  const [newApp, setNewApp] = useState({
+    appName: '',
+    appId: '',
+    clientId: '',
+    clientSecret: '',
+    scopes: '',
+  });
   const [apps, setApps] = useState([]);
 
   useEffect(() => {
@@ -30,7 +36,7 @@ const AdminDashboard = () => {
     try {
       const response = await axios.post('http://localhost:4000/apps', newApp);
       setApps([...apps, response.data]); // Add new app to list
-      setNewApp({ appName: '', appId: '', appSecret: '', scopes: '' });
+      setNewApp({ appName: '', appId: '', clientId: '', clientSecret: '', scopes: '' });
       alert('App added successfully');
     } catch (error) {
       console.error(error);
@@ -72,13 +78,22 @@ const AdminDashboard = () => {
             value={newApp.appId}
             onChange={handleChange}
             required
-          />
-          <label htmlFor="appSecret">App Secret:</label>
+          />{' '}
+          <label htmlFor="clientId">Client ID:</label>
           <input
             type="text"
-            id="appSecret"
-            name="appSecret"
-            value={newApp.appSecret}
+            id="clientId"
+            name="clientId"
+            value={newApp.clientId}
+            onChange={handleChange}
+            required
+          />
+          <label htmlFor="clientSecret">Client Secret:</label>
+          <input
+            type="text"
+            id="clientSecret"
+            name="clientSecret"
+            value={newApp.clientSecret}
             onChange={handleChange}
             required
           />

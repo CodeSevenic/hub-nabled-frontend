@@ -19,6 +19,15 @@ const UserDashboard = () => {
     fetchApps();
   }, []);
 
+  const installApp = (app) => {
+    const url =
+      'https://app.hubspot.com/oauth/authorize' +
+      `?client_id=${encodeURIComponent(app.client_id)}` +
+      `&scope=${encodeURIComponent(app.scopes)}` +
+      `&redirect_uri=${encodeURIComponent(app.redirect_uri)}`;
+    window.open(url, '_blank');
+  };
+
   return (
     <div className="user-dashboard">
       <h2 className="user-dashboard-title">Available Apps</h2>
@@ -26,10 +35,7 @@ const UserDashboard = () => {
         {apps.map((app) => (
           <li key={app.id} className="user-dashboard-list-item">
             <p>{app.appName}</p>
-            <button
-              className="user-dashboard-install-btn"
-              onClick={() => alert('Implement installation process')}
-            >
+            <button className="user-dashboard-install-btn" onClick={() => installApp(app)}>
               Install
             </button>
           </li>
