@@ -38,6 +38,7 @@ const LoginForm = () => {
         pauseOnHover
         theme="dark"
       />
+
       <div className="login-form">
         <form onSubmit={handleSubmit} autoComplete="off">
           <h1>Login</h1>

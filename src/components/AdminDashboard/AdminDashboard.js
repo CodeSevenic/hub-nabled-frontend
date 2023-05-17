@@ -49,6 +49,7 @@ const AdminDashboard = () => {
       alert('An error occurred while deleting the app');
     }
   };
+
   return (
     <div className="admin-dashboard">
       <div className="admin-dashboard-column">
