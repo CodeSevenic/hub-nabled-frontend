@@ -1,35 +1,47 @@
-﻿// src/components/UserDashboard.js
-import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import './UserDashboard.css'; // Importing the CSS file
+import './UserDashboard.css';
 
 const UserDashboard = () => {
   const [apps, setApps] = useState([]);
 
   // Fetch apps from backend
-  useEffect(() => {
-    const fetchApps = async () => {
-      try {
-        const response = await axios.get('http://localhost:4000/apps');
-        setApps(response.data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchApps();
-  }, []);
-
-  const oauthCallBackUrl = 'http://localhost:4000/api/oauth-callback';
+  const fetchApps = async () => {
+    try {
+      const response = await axios.get('http://localhost:4000/apps');
+      setApps(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const installApp = (app) => {
-    const scopes = app.scopes.split(/ |, ?|%20/).join(' ');
-    const url =
-      'https://app.hubspot.com/oauth/authorize' +
-      `?client_id=${encodeURIComponent(app.clientId)}` +
-      `&scope=${encodeURIComponent(scopes)}` +
-      `&redirect_uri=${encodeURIComponent(oauthCallBackUrl)}`;
+    const redirectUri = 'http://localhost:4000/api/install';
+    const url = `${redirectUri}` + `?app_id=${app.id}`;
     window.open(url, 'OAuthWindow', 'height=600,width=800,location=yes,scrollbars=yes');
   };
+
+  useEffect(() => {
+    fetchApps();
+
+    const handleStorageChange = () => {
+      if (localStorage.getItem('oauth_complete') === 'true') {
+        // OAuth process is complete, refresh state
+        fetchApps();
+
+        // Clear the LocalStorage value
+        localStorage.removeItem('oauth_complete');
+      }
+    };
+
+    // Listen for changes to LocalStorage
+    window.addEventListener('storage', handleStorageChange);
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+    };
+  }, []);
 
   return (
     <div className="user-dashboard">

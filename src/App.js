@@ -11,8 +11,6 @@ import UserDashboard from './components/UserAdminDashboard/UserAdminDashboard';
 import OauthComplete from './components/OauthComplete/OauthComplete';
 
 const App = () => {
-  const [installedApps, setInstalledApps] = useState([]);
-
   const { isLoggedIn, isAdmin } = useContext(AuthContext);
 
   useEffect(() => {
@@ -34,23 +32,7 @@ const App = () => {
     };
   }, []);
 
-  // Dummy data for available apps
-  const apps = [
-    { id: 1, name: 'App 1', description: 'This is App 1' },
-    { id: 2, name: 'App 2', description: 'This is App 2' },
-  ];
-
-  const handleLogin = (user) => {
-    // Set the user's installed apps here
-  };
-
   console.log('isLoggedIn: ', isLoggedIn);
-
-  const handleInstall = (appId) => {
-    // Handle the app installation here, e.g., save to the database
-    const app = apps.find((app) => app.id === appId);
-    setInstalledApps([...installedApps, app]);
-  };
 
   console.log('isAdmin: ', isAdmin);
 
