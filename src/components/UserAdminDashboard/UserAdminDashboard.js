@@ -48,9 +48,6 @@ const UserDashboard = () => {
       <h2 className="user-dashboard-title">Available Apps</h2>
       <ul className="user-dashboard-list">
         {apps.map((app) => {
-          console.log('clientID: ', app.clientId);
-          console.log('Scopes: ', app.scopes);
-          console.log('Secret: ', app.clientSecret);
           return (
             <li key={app.id} className="user-dashboard-list-item">
               <p>{app.appName}</p>

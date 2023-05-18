@@ -23,6 +23,8 @@ const AuthContextProvider = ({ children }) => {
       setUser(data.user);
       // Perform other actions, like updating the state, redirecting to another page, etc.
       console.log('Login: Successfully went through!!!');
+      sessionStorage.setItem('userId', data.userId);
+      return data.userId;
     } else {
       throw new Error('Login failed');
     }

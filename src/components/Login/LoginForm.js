@@ -14,6 +14,7 @@ const LoginForm = () => {
     e.preventDefault();
     try {
       const response = await login(email, password);
+      console.log('response: ', response);
       toast.success(response.data.message);
     } catch (error) {
       if (error.response && error.response.status === 400) {
