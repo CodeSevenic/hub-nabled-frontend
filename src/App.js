@@ -8,6 +8,7 @@ import PublicRoute from './components/PublicRoute/PublicRoute';
 import { AuthContext } from './context/AuthContext';
 import AdminDashboard from './components/AdminDashboard/AdminDashboard';
 import UserDashboard from './components/UserAdminDashboard/UserAdminDashboard';
+import OauthComplete from './components/OauthComplete/OauthComplete';
 
 const App = () => {
   const [installedApps, setInstalledApps] = useState([]);
@@ -65,6 +66,12 @@ const App = () => {
         <Route path="/" element={<PrivateRoute isLoggedIn={isLoggedIn} isAdmin={isAdmin} />}>
           <Route index element={<UserDashboard />} />
           <Route index element={<AdminDashboard />} />
+        </Route>
+        <Route
+          path="/oauth-complete"
+          element={<PrivateRoute isLoggedIn={isLoggedIn} isAdmin={isAdmin} />}
+        >
+          <Route element={<OauthComplete />} />
         </Route>
         <Route
           path="/app-admin"
