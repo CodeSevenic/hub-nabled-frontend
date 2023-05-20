@@ -8,7 +8,7 @@ const UserDashboard = () => {
   // Fetch apps from backend
   const fetchApps = async () => {
     try {
-      const response = await axios.get('http://localhost:4000/apps');
+      const response = await axios.get('http://localhost:4000/api/apps');
       setApps(response.data);
     } catch (error) {
       console.error(error);
