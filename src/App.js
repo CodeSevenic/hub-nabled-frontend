@@ -25,6 +25,7 @@ const App = () => {
 
       if (event.data.command === 'close') {
         window.close();
+        console.log('window.close() happened on App.js');
       }
     };
 

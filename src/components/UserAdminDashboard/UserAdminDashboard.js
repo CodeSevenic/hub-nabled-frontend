@@ -45,6 +45,7 @@ const UserDashboard = () => {
     };
 
     window.addEventListener('storage', handleStorageChange);
+    console.log('window.addEventListener happened on UserDashboard.js');
 
     return () => {
       window.removeEventListener('storage', handleStorageChange);
