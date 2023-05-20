@@ -13,6 +13,28 @@ import OauthComplete from './components/OauthComplete/OauthComplete';
 const App = () => {
   const { isLoggedIn, isAdmin } = useContext(AuthContext);
 
+  // useEffect function to handle messages from the OAuth window
+  useEffect(() => {
+    const handleMessage = (event) => {
+      const expectedOrigin = 'http://localhost:3000'; // Replace with your expected origin
+
+      if (event.origin !== expectedOrigin) {
+        console.warn('Received message from untrusted origin, ignoring.');
+        return;
+      }
+
+      if (event.data.command === 'close') {
+        window.close();
+      }
+    };
+
+    window.addEventListener('message', handleMessage);
+
+    return () => {
+      window.removeEventListener('message', handleMessage);
+    };
+  }, []);
+
   useEffect(() => {
     // Keep the #root container full height
     function setRootHeight() {
@@ -49,12 +71,7 @@ const App = () => {
           <Route index element={<UserDashboard />} />
           {/* <Route index element={<AdminDashboard />} /> */}
         </Route>
-        <Route
-          path="/oauth-complete"
-          element={<PrivateRoute isLoggedIn={isLoggedIn} isAdmin={isAdmin} />}
-        >
-          <Route element={<OauthComplete />} />
-        </Route>
+        <Route path="/oauth-complete" element={<OauthComplete />}></Route>
         <Route
           path="/app-admin"
           element={<PrivateRoute isLoggedIn={isLoggedIn} isAdmin={isAdmin} />}

@@ -17,10 +17,15 @@ const UserDashboard = () => {
 
   const installApp = (app) => {
     const userId = sessionStorage.getItem('userId');
-    const redirectUri =
-      'http://localhost:4000/api/install' + `?app_id=${app.id}` + `&userId=${userId}`;
-    const url = `${redirectUri}` + `?app_id=${app.id}` + `?userId=${userId}`;
-    window.open(url, 'OAuthWindow', 'height=600,width=800,location=yes,scrollbars=yes');
+    const redirectUri = 'http://localhost:4000/api/install';
+    const url = `${redirectUri}?app_id=${app.id}&userId=${userId}`;
+
+    // Store the window reference
+    window.oauthWindow = window.open(
+      url,
+      'OAuthWindow',
+      'height=600,width=800,location=yes,scrollbars=yes'
+    );
   };
 
   useEffect(() => {
@@ -28,18 +33,19 @@ const UserDashboard = () => {
 
     const handleStorageChange = () => {
       if (localStorage.getItem('oauth_complete') === 'true') {
-        // OAuth process is complete, refresh state
         fetchApps();
 
-        // Clear the LocalStorage value
+        // Send a message to the OAuth window to close itself
+        if (window.oauthWindow) {
+          window.oauthWindow.postMessage({ command: 'close' }, 'http://localhost:3000'); // target origin
+        }
+
         localStorage.removeItem('oauth_complete');
       }
     };
 
-    // Listen for changes to LocalStorage
     window.addEventListener('storage', handleStorageChange);
 
-    // Clean up the event listener when the component unmounts
     return () => {
       window.removeEventListener('storage', handleStorageChange);
     };

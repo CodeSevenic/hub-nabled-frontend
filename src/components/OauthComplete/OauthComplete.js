@@ -9,10 +9,10 @@ const OauthComplete = () => {
     localStorage.setItem('oauth_complete', 'true');
 
     // Redirect to the main app
-    navigate('/');
+    // navigate('/');
   }, [navigate]);
 
-  return null;
+  return <div>Oauth Done</div>;
 };
 
 export default OauthComplete;
