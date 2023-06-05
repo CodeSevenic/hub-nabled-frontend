@@ -18,7 +18,7 @@ const UserDashboard = () => {
   const installApp = (app) => {
     const userId = sessionStorage.getItem('userId');
     const redirectUri = 'http://localhost:4000/api/install';
-    const url = `${redirectUri}?app_id=${app.id}&userId=${userId}`;
+    const url = `${redirectUri}?app_id=${app.appId}&userId=${userId}&appName=${app.appName}`;
 
     // Store the window reference
     window.oauthWindow = window.open(
@@ -36,9 +36,9 @@ const UserDashboard = () => {
         fetchApps();
 
         // Send a message to the OAuth window to close itself
-        if (window.oauthWindow) {
-          window.oauthWindow.postMessage({ command: 'close' }, 'http://localhost:3000'); // target origin
-        }
+        // if (window.oauthWindow) {
+        //   window.oauthWindow.postMessage({ command: 'close' }, 'http://localhost:3000'); // target origin
+        // }
 
         localStorage.removeItem('oauth_complete');
       }
@@ -58,7 +58,7 @@ const UserDashboard = () => {
       <ul className="user-dashboard-list">
         {apps.map((app) => {
           return (
-            <li key={app.id} className="user-dashboard-list-item">
+            <li key={app.appId} className="user-dashboard-list-item">
               <p>{app.appName}</p>
               <button className="user-dashboard-install-btn" onClick={() => installApp(app)}>
                 Install

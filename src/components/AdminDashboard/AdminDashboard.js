@@ -16,7 +16,7 @@ const AdminDashboard = () => {
   useEffect(() => {
     const fetchApps = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/apps');
+        const response = await axios.get('http://localhost:4000/api/apps');
         setApps(response.data);
       } catch (error) {
         console.error(error);
@@ -34,7 +34,7 @@ const AdminDashboard = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:4000/apps', newApp);
+      const response = await axios.post('http://localhost:4000/api/apps', newApp);
       setApps([...apps, response.data]); // Add new app to list
       setNewApp({ appName: '', appId: '', clientId: '', clientSecret: '', scopes: '' });
       alert('App added successfully');
@@ -47,7 +47,7 @@ const AdminDashboard = () => {
   // Delete an app by ID
   const deleteApp = async (id) => {
     try {
-      await axios.delete(`http://localhost:4000/apps/${id}`);
+      await axios.delete(`http://localhost:4000/api/apps/${id}`);
       setApps(apps.filter((app) => app.id !== id)); // Remove app from list
       alert('App deleted successfully');
     } catch (error) {
@@ -55,7 +55,7 @@ const AdminDashboard = () => {
       alert('An error occurred while deleting the app');
     }
   };
-
+  console.log('apps: ', apps);
   return (
     <div className="admin-dashboard">
       <div className="admin-dashboard-column">
