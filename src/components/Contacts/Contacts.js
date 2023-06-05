@@ -5,7 +5,11 @@ function Contacts() {
 
   useEffect(() => {
     fetch('/api/contacts') // Your Node.js API route
-      .then((res) => res.json()) // Parse the response as JSON
+      .then((res) => {
+        console.log('res: ', res);
+        // Parse the response as JSON
+        return res.json();
+      })
       .then((data) => {
         setContacts(data);
       })
@@ -14,7 +18,7 @@ function Contacts() {
       });
   }, []);
 
-  console.log('contacts: ', contacts.length);
+  console.log('contacts: ', contacts);
 
   return (
     <>

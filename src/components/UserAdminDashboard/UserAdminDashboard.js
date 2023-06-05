@@ -70,7 +70,7 @@ const UserDashboard = () => {
           })}
         </ul>
       </div>
-      <Contacts />
+      {/* <Contacts /> */}
     </>
   );
 };
