@@ -1,6 +1,7 @@
 ﻿import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './UserDashboard.css';
+import Contacts from '../Contacts/Contacts';
 
 const UserDashboard = () => {
   const [apps, setApps] = useState([]);
@@ -53,21 +54,24 @@ const UserDashboard = () => {
   }, []);
 
   return (
-    <div className="user-dashboard">
-      <h2 className="user-dashboard-title">Available Apps</h2>
-      <ul className="user-dashboard-list">
-        {apps.map((app) => {
-          return (
-            <li key={app.appId} className="user-dashboard-list-item">
-              <p>{app.appName}</p>
-              <button className="user-dashboard-install-btn" onClick={() => installApp(app)}>
-                Install
-              </button>
-            </li>
-          );
-        })}
-      </ul>
-    </div>
+    <>
+      <div className="user-dashboard">
+        <h2 className="user-dashboard-title">Available Apps</h2>
+        <ul className="user-dashboard-list">
+          {apps.map((app) => {
+            return (
+              <li key={app.appId} className="user-dashboard-list-item">
+                <p>{app.appName}</p>
+                <button className="user-dashboard-install-btn" onClick={() => installApp(app)}>
+                  Install
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+      <Contacts />
+    </>
   );
 };
 

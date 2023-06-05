@@ -4,7 +4,7 @@ function Contacts() {
   const [contacts, setContacts] = useState([]);
 
   useEffect(() => {
-    fetch('/api/contact') // Your Node.js API route
+    fetch('/api/contacts') // Your Node.js API route
       .then((res) => res.json()) // Parse the response as JSON
       .then((data) => {
         setContacts(data);
@@ -14,14 +14,22 @@ function Contacts() {
       });
   }, []);
 
+  console.log('contacts: ', contacts.length);
+
   return (
-    <div>
-      {contacts.map((contact, index) => (
-        <p key={index}>
-          Contact name: {contact.firstname} {contact.lastname}
-        </p>
-      ))}
-    </div>
+    <>
+      {contacts.length !== 0 ? (
+        <div>
+          {contacts.map((contact, index) => (
+            <p key={index}>
+              Contact name: {contact.firstname} {contact.lastname}
+            </p>
+          ))}
+        </div>
+      ) : (
+        <div>There are no contacts</div>
+      )}
+    </>
   );
 }
 
