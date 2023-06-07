@@ -10,6 +10,7 @@ const AuthContextProvider = ({ children }) => {
   const login = async (email, password) => {
     const response = await fetch('http://localhost:4000/api/login', {
       method: 'POST',
+      credentials: 'include',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password }),
     });
@@ -33,6 +34,7 @@ const AuthContextProvider = ({ children }) => {
   const register = async (email, password) => {
     const response = await fetch('http://localhost:4000/api/register', {
       method: 'POST',
+      credentials: 'include',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password }),
     });
@@ -54,6 +56,7 @@ const AuthContextProvider = ({ children }) => {
   const installApp = async (appId) => {
     const response = await fetch('http://localhost:8000/api/install', {
       method: 'POST',
+      credentials: 'include',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ appId }),
     });

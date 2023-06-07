@@ -12,7 +12,6 @@ const LoginForm = () => {
 
   const handleSubmit = async (e) => {
     // store email on session storage
-    sessionStorage.setItem('email', email);
     e.preventDefault();
     try {
       const response = await login(email, password);
