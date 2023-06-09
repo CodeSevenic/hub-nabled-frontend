@@ -29,7 +29,10 @@ function Contacts() {
         <div>
           {contacts.map((contact, index) => (
             <p key={index}>
-              Contact name: {contact.firstname} {contact.lastname}
+              Contact name:{' '}
+              <b>
+                {contact.properties.firstname} {contact.properties.lastname}
+              </b>
             </p>
           ))}
         </div>
