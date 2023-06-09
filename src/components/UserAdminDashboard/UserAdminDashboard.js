@@ -17,6 +17,7 @@ const UserDashboard = () => {
   };
 
   const installApp = (app) => {
+    console.log('App: ', app);
     const userId = sessionStorage.getItem('userId');
     const redirectUri = 'http://localhost:4000/api/install';
     const url = `${redirectUri}?app_id=${app.appId}&userId=${userId}&appName=${app.appName}`;
