@@ -31,12 +31,12 @@ const AuthContextProvider = ({ children }) => {
     }
   };
 
-  const register = async (email, password) => {
+  const register = async (username, email, password) => {
     const response = await fetch('http://localhost:4000/api/register', {
       method: 'POST',
       credentials: 'include',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ username, email, password }),
     });
 
     console.log(response);

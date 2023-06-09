@@ -6,6 +6,7 @@ import './Registration.css';
 import { Link } from 'react-router-dom';
 
 const RegistrationForm = ({ onRegister }) => {
+  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -20,7 +21,7 @@ const RegistrationForm = ({ onRegister }) => {
       return;
     }
     try {
-      const response = await register(email, password);
+      const response = await register(username, email, password);
       console.log('STATUS: ', response);
       if (response.status === 200) {
         toast.success(response.message);
@@ -51,6 +52,18 @@ const RegistrationForm = ({ onRegister }) => {
       <div className="registration-form">
         <form onSubmit={handleSubmit} autoComplete="off">
           <h1>Register</h1>
+          <div>
+            <label htmlFor="username">Username:</label>
+            <input
+              placeholder="Username"
+              type="text"
+              id="username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              autoComplete="off"
+              required
+            />
+          </div>
           <div>
             <label htmlFor="email">Email:</label>
             <input

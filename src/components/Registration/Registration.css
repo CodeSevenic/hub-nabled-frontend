@@ -45,6 +45,7 @@
 }
 
 .registration-form input[type='email'],
+.registration-form input[type='text'],
 .registration-form input[type='password'] {
   padding: 10px;
   border: none;
