@@ -24,7 +24,7 @@ function Contacts() {
   console.log('contacts: ', contacts);
 
   return (
-    <>
+    <div className="portal-contacts">
       {contacts && contacts.length > 0 ? (
         <div>
           {contacts.map((contact, index) => (
@@ -39,7 +39,7 @@ function Contacts() {
       ) : (
         <div>There are no contacts</div>
       )}
-    </>
+    </div>
   );
 }
 
