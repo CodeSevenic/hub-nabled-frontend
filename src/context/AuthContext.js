@@ -3,7 +3,6 @@
 export const AuthContext = createContext();
 
 const AuthContextProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
 
@@ -21,7 +20,6 @@ const AuthContextProvider = ({ children }) => {
         setIsAdmin(true);
       }
       setIsLoggedIn(true);
-      setUser(data.user);
       // Perform other actions, like updating the state, redirecting to another page, etc.
       console.log('Login: Successfully went through!!!');
       sessionStorage.setItem('userId', data.userId);
@@ -29,6 +27,15 @@ const AuthContextProvider = ({ children }) => {
     } else {
       throw new Error('Login failed');
     }
+  };
+
+  const loginStatus = async () => {
+    const response = await fetch('http://localhost:4000/api/isloggedin', {
+      method: 'GET',
+      credentials: 'include',
+      headers: { 'Content-Type': 'application/json' },
+    });
+    console.log('LoginStatus: ', response);
   };
 
   const register = async (username, email, password) => {
@@ -43,7 +50,6 @@ const AuthContextProvider = ({ children }) => {
 
     if (response.ok) {
       const data = await response.json();
-      setUser(data.user);
       // Perform other actions, like updating the state, redirecting to another page, etc.
       console.log('Register: Successfully went through!!!');
       return data;
@@ -67,7 +73,7 @@ const AuthContextProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, register, installApp, isLoggedIn, isAdmin }}>
+    <AuthContext.Provider value={{ login, register, installApp, isLoggedIn, isAdmin, loginStatus }}>
       {children}
     </AuthContext.Provider>
   );

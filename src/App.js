@@ -12,7 +12,7 @@ import OauthComplete from './components/OauthComplete/OauthComplete';
 import Layout from './components/Layout/Layout';
 
 const App = () => {
-  const { isLoggedIn, isAdmin } = useContext(AuthContext);
+  const { isLoggedIn, isAdmin, loginStatus } = useContext(AuthContext);
 
   // useEffect function to handle messages from the OAuth window
   // useEffect(() => {
@@ -46,6 +46,8 @@ const App = () => {
         root.style.height = `${windowHeight}px`;
       }
     }
+
+    loginStatus();
 
     setRootHeight();
 
