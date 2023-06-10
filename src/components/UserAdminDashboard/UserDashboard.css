@@ -1,7 +1,8 @@
-﻿/* UserDashboard.css */
+/* UserDashboard.css */
 .user-dashboard-wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  gap: 2rem;
 }
 .user-dashboard {
   background: linear-gradient(to bottom, #663399, #8a2be2);
@@ -85,4 +86,10 @@
 .user-dashboard > ul .user-dashboard-list-item > p {
   font-size: 1.2rem;
   font-weight: 600;
+}
+
+@media screen and (max-width: 920px) {
+  .user-dashboard-wrapper {
+    grid-template-columns: 1fr;
+  }
 }
