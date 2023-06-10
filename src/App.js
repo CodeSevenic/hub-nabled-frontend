@@ -69,21 +69,18 @@ const App = () => {
         <Route path="/register" element={<PublicRoute isLoggedIn={isLoggedIn} />}>
           <Route index element={<RegistrationForm />} />
         </Route>
-        <Route path="/" element={<Layout />}>
-          <Route
-            path="/user-dashboard"
-            element={<PrivateRoute isLoggedIn={isLoggedIn} isAdmin={isAdmin} />}
-          >
-            <Route index element={<UserDashboard />} />
-          </Route>
-          <Route path="/oauth-complete" element={<OauthComplete />} />
-          <Route
-            path="app-admin"
-            element={<PrivateRoute isLoggedIn={isLoggedIn} isAdmin={isAdmin} />}
-          >
-            <Route index element={<AdminDashboard />} />
-          </Route>
+        {/* <Route element={<Layout />}> */}
+        <Route path="/" element={<PrivateRoute isLoggedIn={isLoggedIn} isAdmin={isAdmin} />}>
+          <Route index element={<UserDashboard />} />
         </Route>
+        <Route path="/oauth-complete" element={<OauthComplete />} />
+        <Route
+          path="app-admin"
+          element={<PrivateRoute isLoggedIn={isLoggedIn} isAdmin={isAdmin} />}
+        >
+          <Route index element={<AdminDashboard />} />
+        </Route>
+        {/* </Route> */}
       </Routes>
     </Router>
   );

@@ -1,5 +1,6 @@
 ﻿import { useEffect } from 'react';
 import { Navigate, Outlet, useLocation, useNavigate } from 'react-router-dom';
+import Layout from '../Layout/Layout';
 
 const PrivateRoute = ({ isLoggedIn, isAdmin }) => {
   const navigate = useNavigate();
@@ -16,7 +17,13 @@ const PrivateRoute = ({ isLoggedIn, isAdmin }) => {
     }
   }, [isLoggedIn, isAdmin, navigate, location]);
 
-  return isLoggedIn ? <Outlet /> : <Navigate to={redirectTo} replace />;
+  return isLoggedIn ? (
+    <Layout>
+      <Outlet />
+    </Layout>
+  ) : (
+    <Navigate to={redirectTo} replace />
+  );
 };
 
 export default PrivateRoute;
