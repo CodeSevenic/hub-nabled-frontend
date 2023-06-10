@@ -9,6 +9,7 @@ import { AuthContext } from './context/AuthContext';
 import AdminDashboard from './components/AdminDashboard/AdminDashboard';
 import UserDashboard from './components/UserAdminDashboard/UserAdminDashboard';
 import OauthComplete from './components/OauthComplete/OauthComplete';
+import Layout from './components/Layout/Layout';
 
 const App = () => {
   const { isLoggedIn, isAdmin } = useContext(AuthContext);
@@ -68,16 +69,20 @@ const App = () => {
         <Route path="/register" element={<PublicRoute isLoggedIn={isLoggedIn} />}>
           <Route index element={<RegistrationForm />} />
         </Route>
-        <Route path="/" element={<PrivateRoute isLoggedIn={isLoggedIn} isAdmin={isAdmin} />}>
-          <Route index element={<UserDashboard />} />
-          {/* <Route index element={<AdminDashboard />} /> */}
-        </Route>
-        <Route path="/oauth-complete" element={<OauthComplete />}></Route>
-        <Route
-          path="/app-admin"
-          element={<PrivateRoute isLoggedIn={isLoggedIn} isAdmin={isAdmin} />}
-        >
-          <Route index element={<AdminDashboard />} />
+        <Route path="/" element={<Layout />}>
+          <Route
+            path="/user-dashboard"
+            element={<PrivateRoute isLoggedIn={isLoggedIn} isAdmin={isAdmin} />}
+          >
+            <Route index element={<UserDashboard />} />
+          </Route>
+          <Route path="/oauth-complete" element={<OauthComplete />} />
+          <Route
+            path="app-admin"
+            element={<PrivateRoute isLoggedIn={isLoggedIn} isAdmin={isAdmin} />}
+          >
+            <Route index element={<AdminDashboard />} />
+          </Route>
         </Route>
       </Routes>
     </Router>

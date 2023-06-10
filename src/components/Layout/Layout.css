@@ -1,0 +1,10 @@
+﻿.hub-nabled-header {
+  background-color: blueviolet;
+  margin-bottom: 50px;
+}
+
+.hub-nabled-header h1 {
+  color: white;
+  margin: 0;
+  padding: 20px 20px 20px 20px;
+}
