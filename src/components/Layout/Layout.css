@@ -1,10 +1,30 @@
 ﻿.hub-nabled-header {
   background-color: blueviolet;
   margin-bottom: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
 }
 
 .hub-nabled-header h1 {
   color: white;
   margin: 0;
   padding: 20px 20px 20px 20px;
+}
+
+.hbn-logout-btn {
+  background-color: #663399;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 9px;
+  width: 160px;
+  font-size: 16px;
+  cursor: pointer;
+  border: 1px solid #663399;
+  transition: all 0.3s;
+  height: -moz-fit-content;
+  height: fit-content;
+  box-shadow: 0px 5px 15px rgb(255 255 255 / 16%);
 }
