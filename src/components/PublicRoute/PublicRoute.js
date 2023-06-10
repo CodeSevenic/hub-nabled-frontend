@@ -1,9 +1,11 @@
 ﻿import { Navigate, Outlet, useLocation } from 'react-router-dom';
 
-const PublicRoute = ({ isLoggedIn, redirectTo = '/' }) => {
+const PublicRoute = ({ redirectTo = '/' }) => {
+  const userId = sessionStorage.getItem('userId');
+
   const location = useLocation();
 
-  return isLoggedIn ? <Navigate to={redirectTo} replace /> : <Outlet />;
+  return userId ? <Navigate to={redirectTo} replace /> : <Outlet />;
 };
 
 export default PublicRoute;

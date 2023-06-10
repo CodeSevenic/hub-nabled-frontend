@@ -47,8 +47,6 @@ const App = () => {
       }
     }
 
-    loginStatus();
-
     setRootHeight();
 
     window.addEventListener('resize', setRootHeight);
@@ -58,28 +56,21 @@ const App = () => {
     };
   }, []);
 
-  console.log('isLoggedIn: ', isLoggedIn);
-
-  console.log('isAdmin: ', isAdmin);
-
   return (
     <Router>
       <Routes>
-        <Route path="/login" element={<PublicRoute isLoggedIn={isLoggedIn} />}>
+        <Route path="/login" element={<PublicRoute />}>
           <Route index element={<LoginForm />} />
         </Route>
-        <Route path="/register" element={<PublicRoute isLoggedIn={isLoggedIn} />}>
+        <Route path="/register" element={<PublicRoute />}>
           <Route index element={<RegistrationForm />} />
         </Route>
         {/* <Route element={<Layout />}> */}
-        <Route path="/" element={<PrivateRoute isLoggedIn={isLoggedIn} isAdmin={isAdmin} />}>
+        <Route path="/" element={<PrivateRoute isAdmin={isAdmin} />}>
           <Route index element={<UserDashboard />} />
         </Route>
         <Route path="/oauth-complete" element={<OauthComplete />} />
-        <Route
-          path="app-admin"
-          element={<PrivateRoute isLoggedIn={isLoggedIn} isAdmin={isAdmin} />}
-        >
+        <Route path="app-admin" element={<PrivateRoute isAdmin={isAdmin} />}>
           <Route index element={<AdminDashboard />} />
         </Route>
         {/* </Route> */}

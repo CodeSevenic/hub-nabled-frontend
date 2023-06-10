@@ -22,20 +22,17 @@ const AuthContextProvider = ({ children }) => {
       setIsLoggedIn(true);
       // Perform other actions, like updating the state, redirecting to another page, etc.
       console.log('Login: Successfully went through!!!');
+      console.log('Login: ', data);
+
       sessionStorage.setItem('userId', data.userId);
+      sessionStorage.setItem('isAdmin', data.isAdmin);
+      sessionStorage.setItem('username', data.username);
+      sessionStorage.setItem('isLoggedIn', data.isLoggedIn);
+
       return data.userId;
     } else {
       throw new Error('Login failed');
     }
-  };
-
-  const loginStatus = async () => {
-    const response = await fetch('http://localhost:4000/api/isloggedin', {
-      method: 'GET',
-      credentials: 'include',
-      headers: { 'Content-Type': 'application/json' },
-    });
-    console.log('LoginStatus: ', response);
   };
 
   const register = async (username, email, password) => {
@@ -73,7 +70,7 @@ const AuthContextProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ login, register, installApp, isLoggedIn, isAdmin, loginStatus }}>
+    <AuthContext.Provider value={{ login, register, installApp, isLoggedIn, isAdmin }}>
       {children}
     </AuthContext.Provider>
   );
