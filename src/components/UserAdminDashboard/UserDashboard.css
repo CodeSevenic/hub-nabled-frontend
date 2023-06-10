@@ -1,4 +1,8 @@
 ﻿/* UserDashboard.css */
+.user-dashboard-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
 .user-dashboard {
   background: linear-gradient(to bottom, #663399, #8a2be2);
   padding: 50px;

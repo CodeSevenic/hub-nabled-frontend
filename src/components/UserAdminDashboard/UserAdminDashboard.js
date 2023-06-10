@@ -55,7 +55,7 @@ const UserDashboard = () => {
   }, []);
 
   return (
-    <>
+    <div className="user-dashboard-wrapper">
       <div className="user-dashboard">
         <h2 className="user-dashboard-title">Available Apps</h2>
         <ul className="user-dashboard-list">
@@ -72,7 +72,7 @@ const UserDashboard = () => {
         </ul>
       </div>
       <Contacts />
-    </>
+    </div>
   );
 };
 
