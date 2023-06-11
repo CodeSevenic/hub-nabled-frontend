@@ -1,25 +1,28 @@
-﻿import { useEffect } from 'react';
+﻿import { useContext, useEffect } from 'react';
 import { Navigate, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import Layout from '../Layout/Layout';
+import { AuthContext } from '../../context/AuthContext';
 
-const PrivateRoute = ({ isAdmin }) => {
+const PrivateRoute = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const redirectTo = { pathname: '/login', state: { from: location } };
 
-  const userId = sessionStorage.getItem('userId');
+  const { isLoggedIn, isAdmin } = useContext(AuthContext);
+
+  console.log('isAdminSession: ', isAdmin);
 
   useEffect(() => {
-    if (userId) {
+    if (isLoggedIn) {
       if (isAdmin && location.pathname !== '/app-admin') {
         navigate('/app-admin', { replace: true });
       } else if (!isAdmin && location.pathname === '/app-admin') {
         navigate('/', { replace: true });
       }
     }
-  }, [userId, isAdmin, navigate, location]);
+  }, [isLoggedIn, isAdmin, navigate, location]);
 
-  return userId ? (
+  return isLoggedIn ? (
     <Layout>
       <Outlet />
     </Layout>

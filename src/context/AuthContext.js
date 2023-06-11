@@ -1,4 +1,4 @@
-﻿import React, { useState, createContext } from 'react';
+﻿import React, { useState, createContext, useEffect } from 'react';
 
 export const AuthContext = createContext();
 
@@ -16,10 +16,6 @@ const AuthContextProvider = ({ children }) => {
 
     if (response.ok) {
       const data = await response.json();
-      if (data.isAdmin) {
-        setIsAdmin(true);
-      }
-      setIsLoggedIn(true);
       // Perform other actions, like updating the state, redirecting to another page, etc.
       console.log('Login: Successfully went through!!!');
       console.log('Login: ', data);
@@ -70,7 +66,9 @@ const AuthContextProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ login, register, installApp, isLoggedIn, isAdmin }}>
+    <AuthContext.Provider
+      value={{ login, register, installApp, isAdmin, isLoggedIn, setIsAdmin, setIsLoggedIn }}
+    >
       {children}
     </AuthContext.Provider>
   );

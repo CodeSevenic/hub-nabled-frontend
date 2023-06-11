@@ -12,8 +12,7 @@ import OauthComplete from './components/OauthComplete/OauthComplete';
 import Layout from './components/Layout/Layout';
 
 const App = () => {
-  const { isLoggedIn, isAdmin, loginStatus } = useContext(AuthContext);
-
+  const { setIsAdmin, setIsLoggedIn } = useContext(AuthContext);
   // useEffect function to handle messages from the OAuth window
   // useEffect(() => {
   //   const handleMessage = (event) => {
@@ -47,6 +46,14 @@ const App = () => {
       }
     }
 
+    if (sessionStorage.getItem('isLoggedIn')) {
+      setIsLoggedIn(JSON.parse(sessionStorage.getItem('isLoggedIn')));
+    }
+
+    if (sessionStorage.getItem('isAdmin')) {
+      setIsAdmin(JSON.parse(sessionStorage.getItem('isAdmin')));
+    }
+
     setRootHeight();
 
     window.addEventListener('resize', setRootHeight);
@@ -65,15 +72,13 @@ const App = () => {
         <Route path="/register" element={<PublicRoute />}>
           <Route index element={<RegistrationForm />} />
         </Route>
-        {/* <Route element={<Layout />}> */}
-        <Route path="/" element={<PrivateRoute isAdmin={isAdmin} />}>
+        <Route path="/" element={<PrivateRoute />}>
           <Route index element={<UserDashboard />} />
         </Route>
         <Route path="/oauth-complete" element={<OauthComplete />} />
-        <Route path="app-admin" element={<PrivateRoute isAdmin={isAdmin} />}>
+        <Route path="app-admin" element={<PrivateRoute />}>
           <Route index element={<AdminDashboard />} />
         </Route>
-        {/* </Route> */}
       </Routes>
     </Router>
   );

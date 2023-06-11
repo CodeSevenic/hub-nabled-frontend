@@ -1,11 +1,14 @@
-﻿import { Navigate, Outlet, useLocation } from 'react-router-dom';
+﻿import { useContext } from 'react';
+import { Navigate, Outlet } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthContext';
 
 const PublicRoute = ({ redirectTo = '/' }) => {
-  const userId = sessionStorage.getItem('userId');
+  // check if user is logged in with useContext hook
+  const { isLoggedIn } = useContext(AuthContext);
 
-  const location = useLocation();
+  console.log('isLoggedIn: ', isLoggedIn);
 
-  return userId ? <Navigate to={redirectTo} replace /> : <Outlet />;
+  return isLoggedIn ? <Navigate to={redirectTo} replace /> : <Outlet />;
 };
 
 export default PublicRoute;
