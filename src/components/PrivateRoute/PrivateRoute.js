@@ -10,6 +10,8 @@ const PrivateRoute = () => {
 
   const { isLoggedIn, isAdmin } = useContext(AuthContext);
 
+  console.log('isLoggedIn: ', isLoggedIn);
+
   console.log('isAdminSession: ', isAdmin);
 
   useEffect(() => {

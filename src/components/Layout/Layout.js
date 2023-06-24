@@ -1,24 +1,25 @@
-﻿import React from 'react';
-import { Outlet, useNavigate } from 'react-router-dom';
+﻿import React, { useContext } from 'react';
+import { Outlet } from 'react-router-dom';
 
 import './Layout.css';
+import { AuthContext } from '../../context/AuthContext';
 
 const Layout = () => {
-  const navigate = useNavigate();
+  const { setIsLoggedIn } = useContext(AuthContext);
 
   const handleLogout = async () => {
     try {
-      const response = await fetch('/logout', {
+      const response = await fetch('http://localhost:4000/api/logout', {
         method: 'POST',
+        credentials: 'include',
         headers: {
           'Content-Type': 'application/json',
         },
       });
-
       if (response.ok) {
         console.log('Logout successful');
-        // Navigate to the login page after successful logout
-        navigate('/login');
+        sessionStorage.clear();
+        setIsLoggedIn(false);
       } else {
         console.log('Logout failed');
       }
@@ -27,10 +28,12 @@ const Layout = () => {
     }
   };
 
+  const username = sessionStorage.getItem('username');
+
   return (
     <div>
       <header className="hub-nabled-header">
-        <h1>Hub Nabled</h1>
+        <h1>Hi, {username}</h1>
         {/* Other elements for your header here */}
         <button onClick={handleLogout} className="hbn-logout-btn">
           Logout

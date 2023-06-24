@@ -25,6 +25,15 @@ const AuthContextProvider = ({ children }) => {
       sessionStorage.setItem('username', data.username);
       sessionStorage.setItem('isLoggedIn', data.isLoggedIn);
 
+      setIsLoggedIn(true);
+
+      // Check if user is admin
+      if (data.isAdmin === 'true') {
+        setIsAdmin(true);
+      } else {
+        setIsAdmin(false);
+      }
+
       return data.userId;
     } else {
       throw new Error('Login failed');
