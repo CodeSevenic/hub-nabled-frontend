@@ -10,7 +10,7 @@ const FeatureToggle = ({ userId, featureName }) => {
 
     try {
       // Send a request to the server to toggle the feature
-      const response = await axios.post('http://your-server-url/toggle-feature', {
+      const response = await axios.post('http://localhost:4000/api/toggle-feature', {
         userId: userId,
         featureName: featureName,
         isEnabled: isEnabled,
