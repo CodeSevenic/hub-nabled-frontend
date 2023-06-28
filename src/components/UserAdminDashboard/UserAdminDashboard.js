@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Contacts from '../Contacts/Contacts';
 import './UserDashboard.css';
+import FeatureToggle from '../FeatureToggle/FeatureToggle';
 
 const UserDashboard = () => {
   const [apps, setApps] = useState([]);
@@ -72,6 +73,10 @@ const UserDashboard = () => {
         </ul>
       </div>
       <Contacts />
+      <FeatureToggle
+        featureName={'contacts'}
+        userId={'1686304441140-ef932950-6d4e-467e-a60c-909434a97378'}
+      />
     </div>
   );
 };
