@@ -50,7 +50,7 @@ function Contacts({ account }) {
         ))}
       </ul>
 
-      <FeatureToggle featureName={'contacts'} userId={userId} />
+      <FeatureToggle featureName={'contacts'} userId={userId} portalId={account} />
     </div>
   );
 }
