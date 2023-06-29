@@ -78,7 +78,6 @@ const UserDashboard = () => {
           })}
         </ul>
       </div>
-      {/* <Contacts /> */}
       <UserAccounts />
     </div>
   );
