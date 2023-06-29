@@ -1,11 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import Contacts from '../Contacts/Contacts';
 import './UserDashboard.css';
 import FeatureToggle from '../FeatureToggle/FeatureToggle';
+import { AuthContext } from '../../context/AuthContext';
+import UserAccounts from '../Contacts/UserContacts';
 
 const UserDashboard = () => {
   const [apps, setApps] = useState([]);
+
+  const { hubSpotIds } = useContext(AuthContext);
+
+  console.log('hubSpotIds: ', hubSpotIds);
 
   // Fetch apps from backend
   const fetchApps = async () => {
@@ -72,7 +78,8 @@ const UserDashboard = () => {
           })}
         </ul>
       </div>
-      <Contacts />
+      {/* <Contacts /> */}
+      <UserAccounts />
       <FeatureToggle
         featureName={'contacts'}
         userId={'1686304441140-ef932950-6d4e-467e-a60c-909434a97378'}

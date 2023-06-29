@@ -11,6 +11,7 @@ const LoginForm = () => {
   const { login } = useContext(AuthContext);
 
   const handleSubmit = async (e) => {
+    console.log('handleSubmit login');
     // store email on session storage
     e.preventDefault();
     try {

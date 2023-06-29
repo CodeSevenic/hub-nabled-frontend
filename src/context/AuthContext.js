@@ -4,9 +4,12 @@ export const AuthContext = createContext();
 
 const AuthContextProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [hubSpotIds, setHubSpotIds] = useState([]);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [userData, setUserData] = useState({});
 
   const login = async (email, password) => {
+    console.log('Login: email: ', email);
     const response = await fetch('http://localhost:4000/api/login', {
       method: 'POST',
       credentials: 'include',
@@ -20,10 +23,24 @@ const AuthContextProvider = ({ children }) => {
       console.log('Login: Successfully went through!!!');
       console.log('Login: ', data);
 
+      setUserData(data);
+
       sessionStorage.setItem('userId', data.userId);
       sessionStorage.setItem('isAdmin', data.isAdmin);
       sessionStorage.setItem('username', data.username);
       sessionStorage.setItem('isLoggedIn', data.isLoggedIn);
+
+      function getHubSpotIds(data) {
+        let names = [];
+        for (let name in data.appAuths) {
+          names.push(name);
+        }
+        sessionStorage.setItem('hubSpotIds', JSON.stringify(names));
+        setHubSpotIds(names);
+        return names;
+      }
+
+      getHubSpotIds(data);
 
       setIsLoggedIn(true);
 
@@ -76,7 +93,17 @@ const AuthContextProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ login, register, installApp, isAdmin, isLoggedIn, setIsAdmin, setIsLoggedIn }}
+      value={{
+        login,
+        register,
+        installApp,
+        isAdmin,
+        isLoggedIn,
+        setIsAdmin,
+        hubSpotIds,
+        setIsLoggedIn,
+        userData,
+      }}
     >
       {children}
     </AuthContext.Provider>

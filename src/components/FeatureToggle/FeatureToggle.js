@@ -24,6 +24,9 @@ const FeatureToggle = ({ userId, featureName }) => {
 
   return (
     <div>
+      <p>
+        <b>Enabled Features</b>
+      </p>
       <label>
         {featureName}
         <input type="checkbox" checked={isEnabled} onChange={toggleFeature} />
