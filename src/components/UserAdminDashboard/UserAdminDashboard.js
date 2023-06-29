@@ -80,10 +80,6 @@ const UserDashboard = () => {
       </div>
       {/* <Contacts /> */}
       <UserAccounts />
-      <FeatureToggle
-        featureName={'contacts'}
-        userId={'1686304441140-ef932950-6d4e-467e-a60c-909434a97378'}
-      />
     </div>
   );
 };

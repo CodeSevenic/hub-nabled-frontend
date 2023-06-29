@@ -1,7 +1,7 @@
 ﻿import React, { useState } from 'react';
 import axios from 'axios'; // HTTP client for the browser and Node.js
 
-const FeatureToggle = ({ userId, featureName }) => {
+const FeatureToggle = ({ userId, featureName, portalId }) => {
   const [isEnabled, setIsEnabled] = useState(false);
 
   const toggleFeature = async (event) => {
@@ -10,7 +10,7 @@ const FeatureToggle = ({ userId, featureName }) => {
 
     try {
       // Send a request to the server to toggle the feature
-      const response = await axios.post('http://localhost:4000/api/toggle-feature', {
+      const response = await axios.post(`http://localhost:4000/api/toggle-feature/${portalId}`, {
         userId: userId,
         featureName: featureName,
         isEnabled: isEnabled,
